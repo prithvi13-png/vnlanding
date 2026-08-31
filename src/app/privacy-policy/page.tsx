@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/policy/PolicyLayout";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Privacy Policy",
   description: "How Vriddhi Nexus collects, uses and protects your information.",
-};
+  path: "/privacy-policy",
+});
 
 const SECTIONS = [
   {

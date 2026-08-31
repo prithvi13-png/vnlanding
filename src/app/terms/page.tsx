@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/policy/PolicyLayout";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Terms & Conditions",
   description: "The terms and conditions for using the Vriddhi Nexus website.",
-};
+  path: "/terms",
+});
 
 const SECTIONS = [
   {

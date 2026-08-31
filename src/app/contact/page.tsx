@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { ContactForm } from "./ContactForm";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Contact Us",
   description: "Get in touch with the Vriddhi Nexus team.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/policy/PolicyLayout";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Refund Policy",
   description: "How refunds and cancellations are handled for bookings made through Vriddhi Nexus.",
-};
+  path: "/refund-policy",
+});
 
 const SECTIONS = [
   {

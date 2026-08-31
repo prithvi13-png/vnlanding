@@ -30,7 +30,7 @@ export function AppExperience() {
         </div>
 
         {/* Decorative illustration only — no mobile app exists. */}
-        <svg viewBox="0 0 360 420" role="img" aria-label="" aria-hidden="true" className="mx-auto w-full max-w-sm">
+        <svg viewBox="0 0 360 420" aria-hidden="true" className="mx-auto w-full max-w-sm">
           <rect x="10" y="10" width="340" height="400" rx="28" className="fill-brand-surface stroke-brand-border" strokeWidth={2} />
           <circle cx="40" cy="40" r="5" className="fill-brand-border" />
           <circle cx="58" cy="40" r="5" className="fill-brand-border" />

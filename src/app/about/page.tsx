@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { services } from "@/config/services";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "About Us",
   description: "About Vriddhi Nexus Private Limited's multi-service travel booking platform.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
