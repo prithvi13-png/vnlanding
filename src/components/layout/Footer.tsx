@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import { footerQuickLinks, footerSupportLinks } from "@/config/navigation";
-import { services } from "@/config/services";
+import { primaryNav } from "@/config/navigation";
+import { itServices } from "@/config/itServices";
+import { travelServices } from "@/config/services";
 import { siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
 
@@ -9,11 +10,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-brand-border bg-brand-surface">
+    <footer className="bg-brand-text text-white/70">
       <div className="container-brand grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
         <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
-          <Logo />
-          <p className="max-w-xs text-sm text-brand-muted">{siteConfig.description}</p>
+          <Logo variant="dark" />
+          <p className="max-w-xs text-sm text-white/60">{siteConfig.description}</p>
           <ul className="flex items-center gap-2">
             {siteConfig.social.map((social) => {
               const Icon = social.icon;
@@ -27,7 +28,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="inline-flex size-11 items-center justify-center rounded-full border border-brand-border text-brand-muted transition-colors duration-150 ease-out hover:border-brand-primary hover:text-brand-primary"
+                      className="inline-flex size-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors duration-150 ease-out hover:border-brand-gold hover:text-brand-gold"
                     >
                       <Icon className="size-5" />
                     </a>
@@ -35,7 +36,7 @@ export function Footer() {
                     <span
                       aria-label={`${social.label} — link not yet available`}
                       title={`${social.label} — link not yet available`}
-                      className="inline-flex size-11 cursor-not-allowed items-center justify-center rounded-full border border-brand-border text-brand-border"
+                      className="inline-flex size-11 cursor-not-allowed items-center justify-center rounded-full border border-white/10 text-white/25"
                     >
                       <Icon className="size-5" aria-hidden="true" />
                     </span>
@@ -46,34 +47,15 @@ export function Footer() {
           </ul>
         </div>
 
-        <nav aria-label="Quick links">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-text">Quick Links</h3>
+        <nav aria-label="Travel">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Travel</h3>
           <ul className="mt-4 flex flex-col gap-3">
-            {footerQuickLinks.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-brand-muted transition-colors duration-150 ease-out hover:text-brand-primary"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <nav aria-label="Services">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-text">Services</h3>
-          <ul className="mt-4 flex flex-col gap-3">
-            {services.map((service) => (
-              <li key={service.id} className="flex items-center gap-2 text-sm text-brand-muted">
-                {service.status === "live" ? (
-                  <Link
-                    href={service.url ?? "#"}
-                    className="transition-colors duration-150 ease-out hover:text-brand-primary"
-                  >
+            {travelServices.map((service) => (
+              <li key={service.id} className="flex items-center gap-2 text-sm text-white/60">
+                {service.status === "live" && service.url ? (
+                  <a href={service.url} className="transition-colors duration-150 ease-out hover:text-brand-gold">
                     {service.name}
-                  </Link>
+                  </a>
                 ) : (
                   <span>{service.name}</span>
                 )}
@@ -83,14 +65,25 @@ export function Footer() {
           </ul>
         </nav>
 
-        <nav aria-label="Support">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-text">Support</h3>
+        <nav aria-label="Technology">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Technology</h3>
           <ul className="mt-4 flex flex-col gap-3">
-            {footerSupportLinks.map((item) => (
+            {itServices.map((service) => (
+              <li key={service.id} className="text-sm text-white/60">
+                {service.name}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="Navigation">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</h3>
+          <ul className="mt-4 flex flex-col gap-3">
+            {primaryNav.map((item) => (
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className="text-sm text-brand-muted transition-colors duration-150 ease-out hover:text-brand-primary"
+                  className="text-sm text-white/60 transition-colors duration-150 ease-out hover:text-brand-gold"
                 >
                   {item.label}
                 </Link>
@@ -100,9 +93,9 @@ export function Footer() {
         </nav>
       </div>
 
-      <div className="border-t border-brand-border py-6">
-        <p className="container-brand text-center text-xs text-brand-muted">
-          © {year} {siteConfig.legalName}. All rights reserved.
+      <div className="border-t border-white/10 py-6">
+        <p className="container-brand text-center text-xs text-white/40">
+          © {year} {siteConfig.legalName}. All Rights Reserved.
         </p>
       </div>
     </footer>

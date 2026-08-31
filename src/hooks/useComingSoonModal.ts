@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { Service } from "@/types/service";
+import type { TravelService } from "@/types/service";
 
 /**
  * Local open/close state for ComingSoonModal. Each section that can trigger
@@ -7,9 +7,9 @@ import type { Service } from "@/types/service";
  * component itself stays a single, stateless-about-visibility definition.
  */
 export function useComingSoonModal() {
-  const [activeService, setActiveService] = useState<Service | null>(null);
+  const [activeService, setActiveService] = useState<TravelService | null>(null);
 
-  const open = useCallback((service: Service) => setActiveService(service), []);
+  const open = useCallback((service: TravelService) => setActiveService(service), []);
   const close = useCallback(() => setActiveService(null), []);
 
   return { activeService, open, close };

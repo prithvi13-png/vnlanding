@@ -1,16 +1,10 @@
 import type { IconComponent } from "./icon";
-import type { ServiceId } from "./service";
 
+/** A same-page scroll target, e.g. { id: "travel", label: "Travel", href: "#travel" }. */
 export interface NavItem {
   id: string;
   label: string;
   href: string;
-  /**
-   * When set, the header/footer looks up this service in config/services.ts
-   * to decide whether to render a link (status "live") or a button that
-   * opens ComingSoonModal (any other status) — nav items never hardcode this.
-   */
-  serviceId?: ServiceId;
 }
 
 export interface SocialLink {
@@ -27,7 +21,7 @@ export interface SiteConfig {
   tagline: string;
   description: string;
   url: string;
-  /** Placeholder until a real support inbox is provided — shown on /contact and in the footer. */
+  /** Placeholder until a real support inbox is provided — shown in the contact modal and footer. */
   contactEmail: string;
   social: SocialLink[];
 }

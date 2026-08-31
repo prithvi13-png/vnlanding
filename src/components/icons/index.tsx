@@ -225,3 +225,69 @@ export function HeadsetIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function CodeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <path d="M9 8 4.5 12 9 16" />
+      <path d="M15 8l4.5 4-4.5 4" />
+      <path d="M13 5l-2 14" />
+    </svg>
+  );
+}
+
+export function PhoneIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+      <path d="M10.5 18.5h3" />
+    </svg>
+  );
+}
+
+export function LayersIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <path d="M12 3.5 3.5 8 12 12.5 20.5 8Z" />
+      <path d="M3.5 12 12 16.5 20.5 12" />
+      <path d="M3.5 16 12 20.5 20.5 16" />
+    </svg>
+  );
+}
+
+export function WorkflowIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <rect x="3.5" y="4" width="6" height="6" rx="1.5" />
+      <rect x="14.5" y="4" width="6" height="6" rx="1.5" />
+      <rect x="9" y="14" width="6" height="6" rx="1.5" />
+      <path d="M6.5 10v2a2 2 0 0 0 2 2H9M17.5 10v2a2 2 0 0 1-2 2h-.5" />
+    </svg>
+  );
+}
+
+export function SparkleIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <path d="M12 3.5c.6 3 1.9 4.3 4.9 4.9-3 .6-4.3 1.9-4.9 4.9-.6-3-1.9-4.3-4.9-4.9 3-.6 4.3-1.9 4.9-4.9Z" />
+      <path d="M18.5 15c.3 1.5 1 2.2 2.5 2.5-1.5.3-2.2 1-2.5 2.5-.3-1.5-1-2.2-2.5-2.5 1.5-.3 2.2-1 2.5-2.5Z" />
+    </svg>
+  );
+}
+
+export function CloudIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <path d="M7.5 17.5a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17.8 11 4 4 0 0 1 17 17.5Z" />
+    </svg>
+  );
+}
+
+export function NexusOrbIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <circle cx="12" cy="12" r="3.25" />
+      <circle cx="12" cy="12" r="8.25" strokeDasharray="2 3" />
+    </svg>
+  );
+}

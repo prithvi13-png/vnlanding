@@ -1,47 +1,52 @@
 import { BusIcon, CarIcon, PlaneIcon, TrainIcon } from "@/components/icons";
-import type { Service } from "@/types/service";
+import type { TravelService } from "@/types/service";
 
 /**
- * Single source of truth for what's live. Every service surface (nav,
- * tabs, ecosystem cards, footer) branches on `status` — flipping a service
- * to "live" and adding a `url` here is the only change needed to activate it.
+ * Single source of truth for the travel vertical. Every surface (hero CTA,
+ * travel cards, footer) branches on `status` — flipping a service to "live"
+ * and setting its env var is the only change needed to activate it.
  */
-export const services: Service[] = [
+export const travelServices: TravelService[] = [
   {
     id: "bus",
-    name: "Bus",
+    name: "Bus Booking",
     icon: BusIcon,
     status: "live",
-    url: "/#bus-search",
-    description:
-      "Book intercity bus tickets across India with real-time seat selection and instant confirmation.",
+    url: process.env.NEXT_PUBLIC_BUS_URL,
+    description: "Find and book bus journeys through the Vriddhi Nexus Bus Booking platform.",
+    hoverMotion: "slide-x",
   },
   {
-    id: "flights",
-    name: "Flights",
+    id: "flight",
+    name: "Flight Booking",
     icon: PlaneIcon,
     status: "coming-soon",
-    description:
-      "Flight booking is on our roadmap — search and book domestic and international flights, all in one platform.",
+    url: process.env.NEXT_PUBLIC_FLIGHT_URL,
+    description: "Flight booking is coming soon to the Vriddhi Nexus travel ecosystem.",
+    hoverMotion: "diagonal-up",
   },
   {
-    id: "trains",
-    name: "Trains",
+    id: "train",
+    name: "Train Booking",
     icon: TrainIcon,
     status: "coming-soon",
-    description:
-      "Train booking is on our roadmap — plan and book rail journeys alongside your other travel.",
+    url: process.env.NEXT_PUBLIC_TRAIN_URL,
+    description: "Train booking will soon be available through Vriddhi Nexus.",
+    hoverMotion: "forward",
   },
   {
-    id: "cars",
-    name: "Cars",
+    id: "car",
+    name: "Car Booking",
     icon: CarIcon,
     status: "coming-soon",
-    description:
-      "Self-drive and chauffeur-driven car rentals are on our roadmap, coming soon to Vriddhi Nexus.",
+    url: process.env.NEXT_PUBLIC_CAR_URL,
+    description: "Convenient car and cab booking services are coming soon.",
+    hoverMotion: "slide-x",
   },
 ];
 
-export function getServiceById(id: Service["id"]): Service | undefined {
-  return services.find((service) => service.id === id);
+export function getTravelServiceById(id: TravelService["id"]): TravelService | undefined {
+  return travelServices.find((service) => service.id === id);
 }
+
+export const busService = travelServices[0];

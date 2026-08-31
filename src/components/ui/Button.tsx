@@ -51,7 +51,7 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 };
 
 const BASE_CLASSES =
-  "inline-flex items-center justify-center rounded-xl font-semibold transition-colors duration-200 ease-out disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center rounded-xl font-semibold transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none disabled:hover:translate-y-0";
 
 export function Button(props: ButtonProps) {
   const {

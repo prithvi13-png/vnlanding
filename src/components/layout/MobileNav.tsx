@@ -3,25 +3,23 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { CloseIcon } from "@/components/icons";
-import { Badge } from "@/components/ui/Badge";
+import { busService } from "@/config/services";
 import { useDialogA11y } from "@/hooks/useDialogA11y";
-import { resolveNavAction } from "@/lib/navigation";
+import { resolveServiceAction } from "@/lib/services";
 import { cn } from "@/lib/utils";
-import type { Service } from "@/types/service";
 import type { NavItem } from "@/types/site";
 
 interface MobileNavProps {
   open: boolean;
   onClose: () => void;
   items: NavItem[];
-  accountHref: string;
-  accountLabel: string;
-  onOpenServiceModal: (service: Service) => void;
+  onBookBus: () => void;
 }
 
-export function MobileNav({ open, onClose, items, accountHref, accountLabel, onOpenServiceModal }: MobileNavProps) {
+export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   useDialogA11y(drawerRef, open, onClose);
+  const busAction = resolveServiceAction(busService);
 
   return (
     <div
@@ -64,44 +62,40 @@ export function MobileNav({ open, onClose, items, accountHref, accountLabel, onO
 
         <nav aria-label="Mobile">
           <ul className="flex flex-col gap-1">
-            {items.map((item) => {
-              const action = resolveNavAction(item);
-              return (
-                <li key={item.id}>
-                  {action.kind === "link" ? (
-                    <Link
-                      href={action.href}
-                      onClick={onClose}
-                      className="flex min-h-11 items-center rounded-lg px-3 py-3 text-base font-medium text-brand-text transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onClose();
-                        onOpenServiceModal(action.service);
-                      }}
-                      className="flex min-h-11 w-full items-center justify-between gap-3 rounded-lg px-3 py-3 text-left text-base font-medium text-brand-muted transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary"
-                    >
-                      {item.label}
-                      <Badge variant="coming-soon">Soon</Badge>
-                    </button>
-                  )}
-                </li>
-              );
-            })}
+            {items.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  onClick={onClose}
+                  className="flex min-h-11 items-center rounded-lg px-3 py-3 text-base font-medium text-brand-text transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
         <div className="mt-auto border-t border-brand-border pt-4">
-          <a
-            href={accountHref}
-            className="flex min-h-11 items-center rounded-lg px-3 py-3 text-base font-semibold text-brand-primary transition-colors duration-150 ease-out hover:bg-brand-primary-light"
-          >
-            {accountLabel}
-          </a>
+          {busAction.kind === "link" ? (
+            <a
+              href={busAction.href}
+              className="flex min-h-11 items-center justify-center rounded-xl bg-brand-primary px-4 text-base font-semibold text-white transition-colors duration-150 ease-out hover:bg-brand-primary-dark"
+            >
+              Book a Bus
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                onBookBus();
+              }}
+              className="flex min-h-11 w-full items-center justify-center rounded-xl bg-brand-primary px-4 text-base font-semibold text-white transition-colors duration-150 ease-out hover:bg-brand-primary-dark"
+            >
+              Book a Bus
+            </button>
+          )}
         </div>
       </div>
     </div>

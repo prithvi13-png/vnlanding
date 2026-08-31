@@ -9,8 +9,10 @@
 :root {
   /* Emerald — nav, primary buttons, active states, headings, icons */
   --brand-primary: #0b6e4f;
-  --brand-primary-dark: #095c41;
+  --brand-primary-dark: #07553d;
   --brand-primary-light: #e6f2ee;
+  /* Very dark emerald — Vision section background, deepest surfaces */
+  --brand-emerald-deep: #052f22;
 
   /*
    * Gold — accent only (CTA highlights, hover, dividers, badge fills).
@@ -25,9 +27,9 @@
 
   --brand-background: #f8faf9;
   --brand-surface: #ffffff;
-  --brand-text: #1d2925;
-  --brand-muted: #6b7772;
-  --brand-border: #e3e9e6;
+  --brand-text: #1c2723;
+  --brand-muted: #6e7975;
+  --brand-border: #e1e8e4;
 
   /* Form/validation feedback — not brand accents, kept in the same token system */
   --brand-danger: #c1352b;
@@ -38,6 +40,7 @@
   --color-brand-primary: var(--brand-primary);
   --color-brand-primary-dark: var(--brand-primary-dark);
   --color-brand-primary-light: var(--brand-primary-light);
+  --color-brand-emerald-deep: var(--brand-emerald-deep);
   --color-brand-gold: var(--brand-gold);
   --color-brand-gold-dark: var(--brand-gold-dark);
   --color-brand-gold-light: var(--brand-gold-light);
@@ -105,10 +108,58 @@
     outline-offset: 2px;
     border-radius: 0.25rem;
   }
+
+  /* Anchor-jumps land clear of the fixed navbar (h-20 desktop / h-16 scrolled) */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer components {
   .container-brand {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/*
+ * Ambient hero/vision animation keyframes. Every element using these also
+ * carries motion-reduce:animate-none — reduced-motion users get the static
+ * end state, never a spinning/bobbing page.
+ */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes travel-glow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }

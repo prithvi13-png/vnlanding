@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 
-const STATIC_ROUTES = ["", "/about", "/contact", "/privacy-policy", "/terms", "/refund-policy"];
+const STATIC_ROUTES = ["", "/privacy-policy", "/terms", "/refund-policy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
