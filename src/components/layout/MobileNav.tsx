@@ -25,7 +25,10 @@ export function MobileNav({ open, onClose, items, accountHref, accountLabel, onO
 
   return (
     <div
-      className={cn("fixed inset-0 z-40 md:hidden", open ? "pointer-events-auto" : "pointer-events-none")}
+      className={cn(
+        "fixed inset-0 z-40 overflow-hidden md:hidden",
+        open ? "pointer-events-auto" : "pointer-events-none",
+      )}
       aria-hidden={!open}
     >
       <div

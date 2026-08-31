@@ -51,6 +51,8 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => modal.open(action.service)}
+                    aria-haspopup="dialog"
+                    aria-label={`${item.label} — coming soon`}
                     className="inline-flex h-11 items-center rounded-lg px-3 text-sm font-semibold text-brand-muted transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary"
                   >
                     {item.label}
