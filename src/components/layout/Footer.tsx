@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CallIcon, MailIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/Badge";
 import { primaryNav } from "@/config/navigation";
 import { itServices } from "@/config/itServices";
@@ -8,6 +9,7 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const telHref = `tel:${siteConfig.contactPhone.replace(/\s+/g, "")}`;
 
   return (
     <footer className="bg-brand-text text-white/70">
@@ -15,6 +17,28 @@ export function Footer() {
         <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
           <Logo variant="dark" />
           <p className="max-w-xs text-sm text-white/60">{siteConfig.description}</p>
+
+          <ul className="flex flex-col gap-2 text-sm">
+            <li>
+              <a
+                href={telHref}
+                className="inline-flex items-center gap-2 text-white/70 transition-colors duration-150 ease-out hover:text-brand-gold"
+              >
+                <CallIcon className="size-4 shrink-0" aria-hidden="true" />
+                {siteConfig.contactPhone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="inline-flex items-center gap-2 text-white/70 transition-colors duration-150 ease-out hover:text-brand-gold"
+              >
+                <MailIcon className="size-4 shrink-0" aria-hidden="true" />
+                {siteConfig.contactEmail}
+              </a>
+            </li>
+          </ul>
+
           <ul className="flex items-center gap-2">
             {siteConfig.social.map((social) => {
               const Icon = social.icon;

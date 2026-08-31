@@ -291,3 +291,20 @@ export function NexusOrbIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function MailIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
+export function CallIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base(props)}>
+      <path d="M6.5 4h2.3l1.4 4-2 1.6a11.5 11.5 0 0 0 5.2 5.2l1.6-2 4 1.4v2.3c0 1.1-.9 2-2 2C9.8 18.5 5.5 14.2 4.5 7c0-1.1.9-2 2-2Z" />
+    </svg>
+  );
+}

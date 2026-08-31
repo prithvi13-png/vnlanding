@@ -21,7 +21,9 @@ export interface SiteConfig {
   tagline: string;
   description: string;
   url: string;
-  /** Placeholder until a real support inbox is provided — shown in the contact modal and footer. */
+  /** Shown in the contact modal's error states and the footer. */
   contactEmail: string;
+  /** Display form, e.g. "+91 63640 96792" — footer derives the tel: link by stripping spaces. */
+  contactPhone: string;
   social: SocialLink[];
 }

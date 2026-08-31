@@ -8,8 +8,8 @@ export const siteConfig: SiteConfig = {
   description:
     "Vriddhi Nexus connects modern travel booking and technology solutions through one growing digital ecosystem.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.vriddhinexus.com",
-  // Placeholder inbox until a real support address is provided.
-  contactEmail: "support@vriddhinexus.com",
+  contactEmail: "info@vriddhinexus.com",
+  contactPhone: "+91 63640 96792",
   // Real profile URLs aren't known yet — left empty rather than fabricated.
   // The footer renders these as disabled placeholders.
   social: [
