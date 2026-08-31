@@ -7,7 +7,7 @@ import { MenuIcon } from "@/components/icons";
 import { ComingSoonModal } from "@/components/ui/ComingSoonModal";
 import { accountLinkLabel, primaryNav } from "@/config/navigation";
 import { useComingSoonModal } from "@/hooks/useComingSoonModal";
-import { getBusBookingBaseUrl } from "@/lib/busBooking";
+import { getBusLoginUrl } from "@/lib/busBooking";
 import { resolveNavAction } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
@@ -17,7 +17,7 @@ export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const modal = useComingSoonModal();
-  const accountHref = getBusBookingBaseUrl();
+  const accountHref = getBusLoginUrl();
 
   return (
     <header className="sticky top-0 z-30 border-b border-brand-border bg-brand-surface/95 shadow-header backdrop-blur">

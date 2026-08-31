@@ -55,3 +55,10 @@ export function buildBusSearchUrl({ from, to, date }: BusSearchParams): string {
 
   return `${base}/search?${params.toString()}`;
 }
+
+/** URL for the "Login / My Account" link — `${BASE}/login` on the bus platform. */
+export function getBusLoginUrl(): string {
+  const base = getBusBookingBaseUrl();
+  if (base === FALLBACK_BASE_URL) return base;
+  return `${base}/login`;
+}
