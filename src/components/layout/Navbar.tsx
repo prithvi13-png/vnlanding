@@ -43,7 +43,7 @@ export function Navbar() {
       >
         <Logo />
 
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {primaryNav.map((item) => (
               <li key={item.id}>
@@ -62,10 +62,20 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:block">
-            <Button href="#services" size="sm">
+          <div className="hidden items-center gap-2 lg:flex">
+            <Button href="#services" variant="outline" size="sm">
               Explore Services
             </Button>
+
+            {busAction.kind === "link" ? (
+              <Button href={busAction.href} size="sm">
+                Book Bus
+              </Button>
+            ) : (
+              <Button size="sm" onClick={handleBookBus}>
+                Book Bus
+              </Button>
+            )}
           </div>
 
           <button
@@ -73,7 +83,7 @@ export function Navbar() {
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
-            className="inline-flex size-11 items-center justify-center rounded-lg text-brand-text transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary md:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-lg text-brand-text transition-colors duration-150 ease-out hover:bg-brand-primary-light hover:text-brand-primary lg:hidden"
           >
             <MenuIcon className="size-6" />
           </button>

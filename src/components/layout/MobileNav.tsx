@@ -24,7 +24,7 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-40 overflow-hidden md:hidden",
+        "fixed inset-0 z-40 overflow-hidden lg:hidden",
         open ? "pointer-events-auto" : "pointer-events-none",
       )}
       aria-hidden={!open}
