@@ -97,11 +97,17 @@ export function ContactModal({ onClose, presetService }: ContactModalProps) {
 
     setSubmitState({ status: "loading" });
 
+    // Some free form-backend services (e.g. Web3Forms) identify the
+    // destination inbox via a public access key included in the body
+    // rather than the endpoint URL itself (e.g. Formspree, which doesn't
+    // need this). Harmless extra field when the service doesn't use it.
+    const accessKey = process.env.NEXT_PUBLIC_CONTACT_ACCESS_KEY;
+
     try {
       const response = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(accessKey ? { ...formData, access_key: accessKey } : formData),
       });
 
       if (!response.ok) throw new Error("Enquiry request failed");
