@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { AboutPreview } from "@/components/home/AboutPreview";
+import { AppExperience } from "@/components/home/AppExperience";
 import { BookingWidget } from "@/components/home/BookingWidget";
+import { CTASection } from "@/components/home/CTASection";
 import { Hero } from "@/components/home/Hero";
+import { PopularRoutes } from "@/components/home/PopularRoutes";
+import { TravelEcosystem } from "@/components/home/TravelEcosystem";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 
 export const metadata: Metadata = {
   title: {
@@ -13,9 +19,12 @@ export default function Home() {
     <>
       <Hero />
       <BookingWidget />
-      <div className="container-brand py-16 sm:py-24">
-        <p className="text-brand-muted">Remaining homepage sections are being built out in the next phase.</p>
-      </div>
+      <PopularRoutes />
+      <WhyChooseUs />
+      <TravelEcosystem />
+      <AppExperience />
+      <AboutPreview />
+      <CTASection />
     </>
   );
 }
