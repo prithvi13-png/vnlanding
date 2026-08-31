@@ -82,6 +82,18 @@ export function Button(props: ButtonProps) {
   if (props.href !== undefined) {
     const { href, external, onClick } = props;
 
+    // Protocol links hand off to the OS (mail/phone app), not a browser tab —
+    // never target="_blank" them, and they're never an internal route either.
+    const isProtocolLink = href.startsWith("mailto:") || href.startsWith("tel:");
+
+    if (isProtocolLink) {
+      return (
+        <a href={href} className={classes} onClick={onClick} aria-label={props["aria-label"]}>
+          {content}
+        </a>
+      );
+    }
+
     if (external) {
       return (
         <a

@@ -14,14 +14,15 @@ const HOVER_MOTION: Record<ITService["hoverMotion"], string> = {
 
 interface ITServiceCardProps {
   service: ITService;
-  onClick: () => void;
+  /** mailto: link pre-addressed to this service — see lib/mailto.ts. */
+  href: string;
 }
 
-export function ITServiceCard({ service, onClick }: ITServiceCardProps) {
+export function ITServiceCard({ service, href }: ITServiceCardProps) {
   const Icon = service.icon;
 
   return (
-    <button type="button" onClick={onClick} className="group block h-full w-full text-left">
+    <a href={href} className="group block h-full" aria-label={`Email us about ${service.name}`}>
       <Card
         padding="lg"
         className="flex h-full flex-col gap-4 transition-[transform,box-shadow,border-color] duration-300 ease-out group-hover:-translate-y-1.5 group-hover:border-brand-gold/60 group-hover:shadow-card-hover"
@@ -37,6 +38,6 @@ export function ITServiceCard({ service, onClick }: ITServiceCardProps) {
 
         <ArrowRightIcon className="size-4 text-brand-primary transition-transform duration-300 ease-out group-hover:translate-x-1" />
       </Card>
-    </button>
+    </a>
   );
 }

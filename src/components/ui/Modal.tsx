@@ -16,10 +16,10 @@ interface ModalProps {
 }
 
 /**
- * Shared shell for every modal (ComingSoonModal, ContactModal): overlay,
- * centering, the two-phase-mount entrance animation, focus trap/restore via
- * useDialogA11y, Escape/overlay-click close, and the close button. Content
- * is passed as children so each modal only owns its own body markup.
+ * Shared modal shell: overlay, centering, the two-phase-mount entrance
+ * animation, focus trap/restore via useDialogA11y, Escape/overlay-click
+ * close, and the close button. Content is passed as children so a modal
+ * only needs to own its own body markup — currently used by ComingSoonModal.
  */
 export function Modal({ onClose, labelledBy, describedBy, children, panelClassName }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
