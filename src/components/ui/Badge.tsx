@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-export type BadgeVariant = "live" | "coming-soon" | "neutral";
+export type BadgeVariant = "live" | "coming-soon" | "neutral" | "gold";
 
 interface BadgeProps {
   variant: BadgeVariant;
@@ -15,6 +15,8 @@ const VARIANT_CLASSES: Record<BadgeVariant, string> = {
   live: "bg-brand-primary text-white",
   "coming-soon": "bg-brand-surface text-brand-muted border border-brand-border",
   neutral: "bg-brand-primary-light text-brand-primary",
+  // Gold fill + dark text is the one AA-safe way to use gold as a badge (~7.2:1).
+  gold: "bg-brand-gold text-brand-text",
 };
 
 export function Badge({ variant, children, className }: BadgeProps) {

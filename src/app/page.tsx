@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BookingWidget } from "@/components/home/BookingWidget";
+import { Hero } from "@/components/home/Hero";
 
 export const metadata: Metadata = {
   title: {
@@ -8,9 +10,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="container-brand py-16 sm:py-24">
-      <h1 className="text-4xl">Vriddhi Nexus</h1>
-      <p className="mt-4 max-w-xl text-brand-muted">Homepage sections are being built out in the next phase.</p>
-    </div>
+    <>
+      <Hero />
+      <BookingWidget />
+      <div className="container-brand py-16 sm:py-24">
+        <p className="text-brand-muted">Remaining homepage sections are being built out in the next phase.</p>
+      </div>
+    </>
   );
 }
