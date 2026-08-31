@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -8,10 +9,10 @@ interface LogoProps {
   variant?: "default" | "dark";
 }
 
-/**
- * Placeholder wordmark — the "VN" monogram is the single spot to swap for
- * a real logo (e.g. an <Image> tag) once brand assets are provided.
- */
+const LOGO_ASPECT_RATIO = 880 / 758;
+const LOGO_HEIGHT = 40;
+
+/** The mark is transparent and keeps its own true colors, so it works unchanged on light or dark backgrounds. */
 export function Logo({ className, variant = "default" }: LogoProps) {
   return (
     <Link
@@ -23,14 +24,14 @@ export function Logo({ className, variant = "default" }: LogoProps) {
       )}
       aria-label={`${siteConfig.name} home`}
     >
-      <span
-        className={cn(
-          "inline-flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-extrabold",
-          variant === "dark" ? "bg-brand-gold text-brand-text" : "bg-brand-primary text-white",
-        )}
-      >
-        VN
-      </span>
+      <Image
+        src="/logo.png"
+        alt=""
+        width={Math.round(LOGO_HEIGHT * LOGO_ASPECT_RATIO)}
+        height={LOGO_HEIGHT}
+        priority
+        className="shrink-0"
+      />
       <span className="text-lg leading-none tracking-tight sm:text-xl">{siteConfig.name}</span>
     </Link>
   );
