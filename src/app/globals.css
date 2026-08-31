@@ -1,1 +1,114 @@
 @import "tailwindcss";
+
+/*
+ * Design tokens — single source of truth for the Vriddhi Nexus brand.
+ * Components must reference these via Tailwind utilities (bg-brand-primary,
+ * text-brand-gold, shadow-card, rounded-xl, ...) or var(--brand-*).
+ * Never hardcode a brand hex value inside a component.
+ */
+:root {
+  /* Emerald — nav, primary buttons, active states, headings, icons */
+  --brand-primary: #0b6e4f;
+  --brand-primary-dark: #095c41;
+  --brand-primary-light: #e6f2ee;
+
+  /*
+   * Gold — accent only (CTA highlights, hover, dividers, badge fills).
+   * D4AF37 on white/background is ~2.1:1 contrast and FAILS WCAG AA for
+   * text at any size. Never set gold as a text or icon-only color on a
+   * light surface. When gold is used as a fill, pair it with --brand-text
+   * (dark) on top — that combination is ~7.2:1 and passes AAA.
+   */
+  --brand-gold: #d4af37;
+  --brand-gold-dark: #b8952c;
+  --brand-gold-light: #f8efd6;
+
+  --brand-background: #f8faf9;
+  --brand-surface: #ffffff;
+  --brand-text: #1d2925;
+  --brand-muted: #6b7772;
+  --brand-border: #e3e9e6;
+
+  /* Form/validation feedback — not brand accents, kept in the same token system */
+  --brand-danger: #c1352b;
+  --brand-danger-bg: #fbeae8;
+}
+
+@theme inline {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
+  --color-brand-primary-light: var(--brand-primary-light);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-background: var(--brand-background);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-border: var(--brand-border);
+  --color-brand-danger: var(--brand-danger);
+  --color-brand-danger-bg: var(--brand-danger-bg);
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  /* Rounded cards throughout — overrides Tailwind's default radius scale */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Soft, emerald-tinted shadows for a premium, non-generic feel */
+  --shadow-card: 0 2px 8px 0 rgb(11 42 32 / 0.06), 0 1px 2px 0 rgb(11 42 32 / 0.04);
+  --shadow-card-hover: 0 16px 32px -8px rgb(11 42 32 / 0.14), 0 4px 8px -2px rgb(11 42 32 / 0.06);
+  --shadow-header: 0 1px 3px 0 rgb(11 42 32 / 0.08);
+  --shadow-modal: 0 24px 48px -12px rgb(11 42 32 / 0.24), 0 8px 16px -4px rgb(11 42 32 / 0.1);
+
+  /* Shared vertical rhythm for homepage sections: py-section / py-section-sm */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 3.5rem;
+}
+
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--brand-background);
+    color: var(--brand-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--brand-text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+}
+
+@layer components {
+  .container-brand {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
