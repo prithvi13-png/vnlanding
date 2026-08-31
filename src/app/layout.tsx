@@ -36,7 +36,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={jakarta.variable}>
-      <body className="flex min-h-screen flex-col">
+      {/* suppressHydrationWarning: browser extensions (e.g. Grammarly) inject
+          data-gr-* attributes onto body before React hydrates, which is a
+          client-only DOM mutation, not a real server/client mismatch. */}
+      <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
