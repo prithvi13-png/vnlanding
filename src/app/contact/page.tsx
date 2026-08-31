@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
+import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Vriddhi Nexus.",
+  description: "Get in touch with the Vriddhi Nexus team.",
 };
 
 export default function ContactPage() {
   return (
     <div className="container-brand py-16 sm:py-24">
-      <h1 className="text-4xl">Contact Us</h1>
-      <p className="mt-4 max-w-xl text-brand-muted">The contact form is being built out in a later phase.</p>
+      <div className="mx-auto max-w-xl">
+        <h1 className="text-4xl">Contact Us</h1>
+        <p className="mt-3 text-brand-muted">
+          Have a question or need help with a booking? Send us a message and we&apos;ll get back to you.
+        </p>
+
+        <div className="mt-10">
+          <ContactForm />
+        </div>
+      </div>
     </div>
   );
 }
