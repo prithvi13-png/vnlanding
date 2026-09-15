@@ -48,11 +48,11 @@ export function Hero() {
 
               {busAction.kind === "link" ? (
                 <Button href={busAction.href} variant="outline" size="lg">
-                  Book a Bus
+                  Book Bus Ticket
                 </Button>
               ) : (
                 <Button variant="outline" size="lg" onClick={() => modal.open(busService)}>
-                  Book a Bus
+                  Book Bus Ticket
                 </Button>
               )}
             </div>

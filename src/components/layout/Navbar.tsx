@@ -10,7 +10,7 @@ import { busService } from "@/config/services";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useComingSoonModal } from "@/hooks/useComingSoonModal";
 import { useScrolled } from "@/hooks/useScrolled";
-import { resolveServiceAction } from "@/lib/services";
+import { resolveAuthLinks, resolveServiceAction } from "@/lib/services";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
@@ -21,6 +21,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const modal = useComingSoonModal();
   const busAction = resolveServiceAction(busService);
+  const authLinks = resolveAuthLinks(busService);
 
   function handleBookBus() {
     modal.open(busService);
@@ -63,17 +64,39 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-2 lg:flex">
-            <Button href="#services" variant="outline" size="sm">
-              Explore Services
-            </Button>
+            {/* Four CTAs overflow at lg once auth is in the row — this one is
+                the least critical and duplicates the "Services" nav link.
+                The wrapper carries the visibility: cn() has no tailwind-merge,
+                so a `hidden` passed to Button would fight its base inline-flex. */}
+            <span className="hidden xl:block">
+              <Button href="#services" variant="outline" size="sm">
+                Explore Services
+              </Button>
+            </span>
+
+            {authLinks && (
+              <>
+                <Button href={authLinks.login} variant="ghost" size="sm" className="whitespace-nowrap">
+                  Login
+                </Button>
+                <Button
+                  href={authLinks.register}
+                  variant="outline"
+                  size="sm"
+                  className="whitespace-nowrap"
+                >
+                  Register
+                </Button>
+              </>
+            )}
 
             {busAction.kind === "link" ? (
-              <Button href={busAction.href} size="sm">
-                Book Bus
+              <Button href={busAction.href} size="sm" className="whitespace-nowrap">
+                Book Bus Ticket
               </Button>
             ) : (
-              <Button size="sm" onClick={handleBookBus}>
-                Book Bus
+              <Button size="sm" onClick={handleBookBus} className="whitespace-nowrap">
+                Book Bus Ticket
               </Button>
             )}
           </div>

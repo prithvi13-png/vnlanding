@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { CloseIcon } from "@/components/icons";
 import { busService } from "@/config/services";
 import { useDialogA11y } from "@/hooks/useDialogA11y";
-import { resolveServiceAction } from "@/lib/services";
+import { resolveAuthLinks, resolveServiceAction } from "@/lib/services";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/site";
 
@@ -20,6 +20,7 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   useDialogA11y(drawerRef, open, onClose);
   const busAction = resolveServiceAction(busService);
+  const authLinks = resolveAuthLinks(busService);
 
   return (
     <div
@@ -76,13 +77,30 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
           </ul>
         </nav>
 
-        <div className="mt-auto border-t border-brand-border pt-4">
+        <div className="mt-auto grid gap-2 border-t border-brand-border pt-4">
+          {authLinks && (
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={authLinks.login}
+                className="flex min-h-11 items-center justify-center rounded-xl border border-brand-border bg-brand-surface px-4 text-base font-semibold text-brand-primary transition-colors duration-150 ease-out hover:border-brand-primary hover:bg-brand-primary-light"
+              >
+                Login
+              </a>
+              <a
+                href={authLinks.register}
+                className="flex min-h-11 items-center justify-center rounded-xl border border-brand-border bg-brand-surface px-4 text-base font-semibold text-brand-primary transition-colors duration-150 ease-out hover:border-brand-primary hover:bg-brand-primary-light"
+              >
+                Register
+              </a>
+            </div>
+          )}
+
           {busAction.kind === "link" ? (
             <a
               href={busAction.href}
               className="flex min-h-11 items-center justify-center rounded-xl bg-brand-primary px-4 text-base font-semibold text-white transition-colors duration-150 ease-out hover:bg-brand-primary-dark"
             >
-              Book a Bus
+              Book Bus Ticket
             </a>
           ) : (
             <button
@@ -93,7 +111,7 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
               }}
               className="flex min-h-11 w-full items-center justify-center rounded-xl bg-brand-primary px-4 text-base font-semibold text-white transition-colors duration-150 ease-out hover:bg-brand-primary-dark"
             >
-              Book a Bus
+              Book Bus Ticket
             </button>
           )}
         </div>

@@ -52,7 +52,7 @@ export function TravelServiceCard({ service, href, onClick }: TravelServiceCardP
       <p className="flex-1 text-sm text-brand-muted">{service.description}</p>
 
       <span className="inline-flex items-center gap-1.5 font-semibold text-brand-primary">
-        {isLive ? "Book Bus" : "Notify Me"}
+        {isLive ? "Book Bus Ticket" : "Notify Me"}
         <ArrowRightIcon className="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
       </span>
     </Card>

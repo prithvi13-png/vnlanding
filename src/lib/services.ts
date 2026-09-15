@@ -14,3 +14,20 @@ export function resolveServiceAction(service: TravelService): ServiceAction {
   }
   return { kind: "modal" };
 }
+
+export type AuthLinks = { login: string; register: string };
+
+/**
+ * Accounts live in the booking platform, not on this marketing site. Same rule
+ * as resolveServiceAction: only offer Login/Register once that platform has a
+ * real URL, so they never render against an undefined origin.
+ */
+export function resolveAuthLinks(service: TravelService): AuthLinks | null {
+  const action = resolveServiceAction(service);
+  if (action.kind !== "link") {
+    return null;
+  }
+
+  const base = action.href.replace(/\/+$/, "");
+  return { login: `${base}/login`, register: `${base}/register` };
+}
