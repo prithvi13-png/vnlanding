@@ -21,7 +21,7 @@ const SECTIONS: PolicySection[] = [
   {
     heading: "Who We Are",
     body: [
-      `${siteConfig.legalName} is a company incorporated in India with its registered office in ${legalConfig.jurisdictionCity}, ${legalConfig.jurisdictionState}. In these terms "we", "us" and "our" refer to that company.`,
+      `${siteConfig.legalName} is a company incorporated in India, with its registered office at ${legalConfig.registeredAddress} In these terms "we", "us" and "our" refer to that company.`,
     ],
   },
   {

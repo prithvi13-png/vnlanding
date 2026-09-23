@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CallIcon, MailIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/Badge";
-import { legalNav } from "@/config/legal";
+import { legalConfig, legalNav } from "@/config/legal";
 import { primaryNav } from "@/config/navigation";
 import { itServices } from "@/config/itServices";
 import { travelServices } from "@/config/services";
@@ -133,9 +133,13 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-6">
-        <p className="container-brand text-center text-xs text-white/40">
-          © {year} {siteConfig.legalName}. All Rights Reserved.
-        </p>
+        <div className="container-brand flex flex-col gap-2 text-center text-xs text-white/40">
+          <p>{legalConfig.registeredAddress}</p>
+          <p>GSTIN: {legalConfig.gstin}</p>
+          <p>
+            © {year} {siteConfig.legalName}. All Rights Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

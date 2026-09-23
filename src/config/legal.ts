@@ -5,20 +5,32 @@ import type { NavItem } from "@/types/site";
  * commercial terms can be reviewed and changed in one file rather than hunted
  * through prose. The policy pages read these — they never hard-code a number.
  *
- * CONFIRM BEFORE LAUNCH: the cancellation slabs, refund window, jurisdiction
- * and GSTIN below are the values the business is held to. They are drafted
- * against common Indian bus-operator practice, not supplied by the company.
+ * The company-supplied facts below (GSTIN, registered address, grievance
+ * officer, support address) come from the Privacy Policy issued by Vriddhi
+ * Nexus. The cancellation slabs and refund window are still drafted values
+ * awaiting the company's confirmation.
  */
 export const legalConfig = {
-  /** Shown as "Last updated" on every policy page. */
+  /** Fallback "Last updated" for pages that do not carry their own date. */
   lastUpdated: "23 September 2026",
 
-  /** City whose courts have exclusive jurisdiction; also the registered office. */
+  gstin: "36AAMCV5800E1ZC",
+
+  /** Courts with exclusive jurisdiction; matches the registered office below. */
   jurisdictionCity: "Hyderabad",
   jurisdictionState: "Telangana",
 
-  /** Empty until the company's GST registration is issued — rendered only when set. */
-  gstin: "",
+  registeredAddress:
+    "Lorven Smart Spaces, 2nd Floor, Vaishanavi's Cynosure, Cyber Hills, Gachibowli, R.R. District, Telangana – 500032, India.",
+
+  /** Privacy requests and grievances go here; general enquiries use siteConfig.contactEmail. */
+  supportEmail: "support@vriddhinexus.com",
+
+  grievanceOfficer: {
+    name: "Mettu Sai Prasad",
+    email: "saiprasad@vriddhinexus.com",
+    phone: "+91 6364096792",
+  },
 
   /** Working days for a refund to reach the original payment method. */
   refundWorkingDays: "5 to 7",
