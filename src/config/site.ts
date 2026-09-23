@@ -23,13 +23,13 @@ export const siteConfig: SiteConfig = {
     {
       id: "instagram",
       label: "Instagram",
-      href: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
+      href: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://www.instagram.com/vriddhinexus/",
       icon: InstagramIcon,
     },
     {
       id: "facebook",
       label: "Facebook",
-      href: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "",
+      href: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "https://www.facebook.com/vriddhinexus",
       icon: FacebookIcon,
     },
   ],
