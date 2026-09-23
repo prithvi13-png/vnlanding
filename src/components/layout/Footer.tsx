@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CallIcon, MailIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/Badge";
+import { legalNav } from "@/config/legal";
 import { primaryNav } from "@/config/navigation";
 import { itServices } from "@/config/itServices";
 import { travelServices } from "@/config/services";
@@ -104,6 +105,20 @@ export function Footer() {
           <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</h3>
           <ul className="mt-4 flex flex-col gap-3">
             {primaryNav.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  className="text-sm text-white/60 transition-colors duration-150 ease-out hover:text-brand-gold"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white">Legal</h3>
+          <ul className="mt-4 flex flex-col gap-3">
+            {legalNav.map((item) => (
               <li key={item.id}>
                 <Link
                   href={item.href}
