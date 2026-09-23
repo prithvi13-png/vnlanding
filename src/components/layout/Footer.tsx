@@ -135,7 +135,9 @@ export function Footer() {
       <div className="border-t border-white/10 py-6">
         <div className="container-brand flex flex-col gap-2 text-center text-xs text-white/40">
           <p>{legalConfig.registeredAddress}</p>
-          <p>GSTIN: {legalConfig.gstin}</p>
+          <p>
+            CIN: {legalConfig.cin} &middot; GSTIN: {legalConfig.gstin}
+          </p>
           <p>
             © {year} {siteConfig.legalName}. All Rights Reserved.
           </p>

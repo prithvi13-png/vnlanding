@@ -16,6 +16,9 @@ export const legalConfig = {
 
   gstin: "36AAMCV5800E1ZC",
 
+  /** Companies Act, 2013 incorporation number, stated in the Terms. */
+  cin: "U79110TS2026PTC221081",
+
   /** Courts with exclusive jurisdiction; matches the registered office below. */
   jurisdictionCity: "Hyderabad",
   jurisdictionState: "Telangana",
