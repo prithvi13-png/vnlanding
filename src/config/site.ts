@@ -10,14 +10,15 @@ export const siteConfig: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.vriddhinexus.com",
   contactEmail: "info@vriddhinexus.com",
   contactPhone: "+91 63640 96792",
-  // Set these to the real profile URLs — either here, or via the env vars so
-  // they can be changed from the Vercel dashboard without a code change.
-  // Any left empty render as disabled placeholders rather than dead links.
+  // Real profile URLs. The env vars still win, so any of these can be changed
+  // from the Vercel dashboard without a code change; an empty one renders as a
+  // disabled placeholder rather than a dead link.
   social: [
     {
       id: "linkedin",
       label: "LinkedIn",
-      href: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
+      href:
+        process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/company/vriddhi-nexus/",
       icon: LinkedinIcon,
     },
     {
