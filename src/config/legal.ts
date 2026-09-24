@@ -35,19 +35,7 @@ export const legalConfig = {
     phone: "+91 6364096792",
   },
 
-  /** Working days for a refund to reach the original payment method. */
-  refundWorkingDays: "5 to 7",
 
-  /**
-   * Cancellation charge as a percentage of the ticket fare, by how long before
-   * scheduled departure the cancellation is made. Ordered latest-first.
-   */
-  cancellationSlabs: [
-    { window: "More than 24 hours before departure", charge: "10% of the ticket fare" },
-    { window: "Between 12 and 24 hours before departure", charge: "25% of the ticket fare" },
-    { window: "Between 6 and 12 hours before departure", charge: "50% of the ticket fare" },
-    { window: "Less than 6 hours before departure, or no-show", charge: "100% — no refund" },
-  ],
 } as const;
 
 /** Footer "Legal" column. These pages are also listed in sitemap.ts. */

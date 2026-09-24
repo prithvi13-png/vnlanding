@@ -5,65 +5,93 @@ import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Cancellation Policy",
-  description:
-    "How to cancel a bus booking made through Vriddhi Nexus, and the cancellation charges that apply.",
+  description: "How to cancel a booking made through Vriddhi Nexus and what determines the charge.",
   path: "/cancellation-policy",
 });
 
+/**
+ * Unlike the Privacy Policy and Terms, this was not issued as a standalone
+ * document by the company — it restates what the Terms already commit to
+ * (sections 9, 10 and 11) under the heading customers look for.
+ *
+ * It must therefore not add commitments the Terms do not make. In particular it
+ * states no fixed cancellation percentages, because the Terms leave the charge
+ * to the operator and the fare type. If the company later issues its own signed
+ * document, replace this wholesale.
+ *
+ * The identical text is published on the booking platform; change both together.
+ */
 const SECTIONS: PolicySection[] = [
   {
-    heading: "Scope of This Policy",
+    heading: "1. Scope of This Policy",
     body: [
-      `This policy covers bookings made through the Vriddhi Nexus bus booking platform. It explains how a booking can be cancelled and what is deducted when it is. How the resulting amount is returned to you is covered separately in our Refund Policy.`,
-      `Travel is operated by independent bus operators. Where an operator's own cancellation terms are stricter than ours, those terms are shown to you before payment and take precedence for that booking.`,
+      "This policy covers bookings made through the Vriddhi Nexus platform. It explains how a booking can be cancelled and what determines the amount deducted. How the remaining amount is returned to you is covered in our Refund Policy.",
+      "Travel is provided by independent operators. The cancellation conditions applicable to your booking are set by the relevant operator or booking partner and are displayed during or before booking wherever provided.",
     ],
   },
   {
-    heading: "How to Cancel a Booking",
-    body: [
-      `You can cancel from the booking platform, or by contacting us with your PNR and the registered mobile number.`,
-    ],
+    heading: "2. How to Cancel a Booking",
+    body: ["You can cancel from the booking platform, or by contacting us with your booking ID or PNR."],
     bullets: [
-      `Sign in and open My Bookings, select the booking, and choose Cancel Booking.`,
-      `Guests who booked without an account can use the PNR and mobile number from the confirmation email.`,
-      `Email ${siteConfig.contactEmail} or call ${siteConfig.contactPhone} and quote your PNR.`,
-      `A cancellation is only effective once you receive a cancellation confirmation from us — a request that has not been confirmed has not been cancelled.`,
+      "Sign in and open Bookings, select the booking, and choose to cancel it.",
+      "Guests who booked without an account can use the booking ID or PNR from the confirmation email.",
+      `Email ${legalConfig.supportEmail} quoting your booking ID or PNR.`,
+      "A cancellation takes effect only once we confirm it. A request that has not been confirmed has not been cancelled.",
     ],
   },
   {
-    heading: "Cancellation Charges",
-    body: [
-      `The charge depends on how long before scheduled departure the cancellation is confirmed. It is calculated on the ticket fare.`,
+    heading: "3. Cancellation Charges",
+    body: ["Cancellation eligibility and charges may vary depending upon:"],
+    bullets: [
+      "bus operator;",
+      "route;",
+      "fare type;",
+      "time remaining before departure;",
+      "promotional conditions; and",
+      "other conditions applicable to the booking.",
     ],
-    table: {
-      columns: ["When you cancel", "Cancellation charge"],
-      rows: legalConfig.cancellationSlabs,
-    },
-  },
-  {
-    heading: "Partial Cancellation",
-    body: [
-      `Where a booking covers more than one passenger, individual seats can be cancelled while the rest of the booking stands. Charges are applied per cancelled seat using the table above, and a revised ticket is issued for the remaining passengers.`,
-    ],
-  },
-  {
-    heading: "Cancellation by the Operator",
-    body: [
-      `If the operator cancels the service, or the bus does not run, you are entitled to a full refund of the ticket fare with no cancellation charge. We will notify you on the contact details recorded against the booking and begin the refund without you having to ask.`,
-      `A delayed departure is not treated as a cancellation. Where a delay is substantial, contact us and we will take it up with the operator.`,
+    subsections: [
+      {
+        body: [
+          "The applicable cancellation conditions should be displayed during or before booking wherever provided by the operator or booking partner. Please check them before confirming payment.",
+          "Certain platform charges, payment charges, promotional amounts or convenience fees may be non-refundable where permitted by law and where disclosed to you.",
+        ],
+      },
     ],
   },
   {
-    heading: "No-Show",
+    heading: "4. Cancellation or Modification by the Operator",
     body: [
-      `A passenger who does not board at the selected boarding point at the scheduled time is treated as a no-show. No-show bookings are not refundable, and cannot be cancelled after departure.`,
-      `Please reach the boarding point at least 15 minutes before the scheduled departure time, and carry the ticket along with a valid photo ID.`,
+      "Operators may cancel, postpone, reschedule or modify a service for operational, traffic, weather, regulatory, safety or other reasons beyond our reasonable control.",
+      "Where an operator cancels a journey and confirms refund eligibility, Vriddhi Nexus will facilitate the applicable refund based on information and funds received or authorised by the relevant operator, aggregator or payment partner. Where available, alternative services may be offered, but availability cannot be guaranteed.",
     ],
   },
   {
-    heading: "Changes to This Policy",
+    heading: "5. No-Show",
     body: [
-      `We may update this policy from time to time. The version shown here on the date you book is the one that applies to that booking.`,
+      "Failure to arrive at the boarding point within the time prescribed by the operator may be treated as a no-show and may result in forfeiture of the booking amount in accordance with the operator's policy.",
+      "Please reach the boarding point on time and carry your ticket together with valid identification where required.",
+    ],
+  },
+  {
+    heading: "6. Refunds Following Cancellation",
+    body: [
+      "Any refund following cancellation will be calculated in accordance with the applicable cancellation policy and processed as described in our Refund Policy.",
+    ],
+  },
+  {
+    heading: "7. Changes to This Policy",
+    body: [
+      "We may update this policy from time to time. The version published when you make a booking is the one that applies to that booking.",
+    ],
+  },
+  {
+    heading: "8. Contact Us",
+    body: [
+      "For cancellation queries:",
+      siteConfig.legalName,
+      `Email: ${legalConfig.supportEmail}`,
+      "Website: www.vriddhinexus.com",
     ],
   },
 ];
@@ -72,7 +100,9 @@ export default function CancellationPolicyPage() {
   return (
     <PolicyLayout
       title="Cancellation Policy"
-      intro="How to cancel a bus booking made through Vriddhi Nexus, and the charges that apply when you do."
+      intro="How to cancel a booking made through Vriddhi Nexus and what determines the charge. This policy restates the cancellation terms in our Terms & Conditions; where the two differ, the Terms & Conditions prevail."
+      effectiveDate="22 September 2026"
+      lastUpdated="22 September 2026"
       sections={SECTIONS}
     />
   );
