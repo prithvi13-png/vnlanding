@@ -16,6 +16,7 @@ export function FadeIn({ children, className, delayMs = 0 }: FadeInProps) {
   return (
     <div
       ref={ref}
+      data-reveal
       className={cn(
         "transition-opacity duration-700 ease-out motion-reduce:transition-none",
         inView ? "opacity-100" : "opacity-0",

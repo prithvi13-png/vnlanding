@@ -11,8 +11,7 @@ export function VisionSection() {
       <svg
         aria-hidden="true"
         viewBox="0 0 800 400"
-        className="absolute inset-0 h-full w-full opacity-20 motion-reduce:animate-none"
-        style={{ animation: inView ? "gradient-pan 20s ease-in-out infinite" : undefined }}
+        className="absolute inset-0 h-full w-full opacity-20"
       >
         <circle cx="120" cy="80" r="2" className="fill-brand-gold" />
         <circle cx="680" cy="120" r="2" className="fill-brand-gold" />
@@ -33,6 +32,7 @@ export function VisionSection() {
         />
 
         <h2
+          data-reveal
           className={cn(
             "max-w-3xl text-[clamp(2rem,4.5vw,3.5rem)] text-white transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",
             inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
@@ -42,6 +42,7 @@ export function VisionSection() {
         </h2>
 
         <p
+          data-reveal
           className={cn(
             "max-w-2xl text-lg text-white/70 transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",
             inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",

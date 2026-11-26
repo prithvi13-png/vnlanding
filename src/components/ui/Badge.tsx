@@ -9,7 +9,7 @@ interface BadgeProps {
   className?: string;
 }
 
-// coming-soon: muted-on-white passes ~4.66:1 (AA). Gold is deliberately not
+// coming-soon: muted-on-white passes ~5.5:1 (AA). Gold is deliberately not
 // used here — gold text on any light fill fails contrast (see globals.css).
 const VARIANT_CLASSES: Record<BadgeVariant, string> = {
   live: "bg-brand-primary text-white",

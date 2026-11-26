@@ -28,7 +28,9 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
         "fixed inset-0 z-40 overflow-hidden lg:hidden",
         open ? "pointer-events-auto" : "pointer-events-none",
       )}
-      aria-hidden={!open}
+      // inert, not just aria-hidden: a closed drawer's links must not take
+      // Tab focus while it sits off-screen.
+      inert={!open}
     >
       <div
         className={cn(
@@ -44,9 +46,11 @@ export function MobileNav({ open, onClose, items, onBookBus }: MobileNavProps) {
         aria-modal="true"
         aria-label="Site menu"
         tabIndex={-1}
+        // The shadow is only on while open: parked off-screen, the drawer's
+        // shadow otherwise bleeds back over the right edge of every page.
         className={cn(
-          "absolute right-0 top-0 flex h-full w-full max-w-xs flex-col overflow-y-auto bg-brand-surface p-6 shadow-modal transition-transform duration-300 ease-out",
-          open ? "translate-x-0" : "translate-x-full",
+          "absolute right-0 top-0 flex h-full w-full max-w-xs flex-col overflow-y-auto bg-brand-surface p-6 transition-[transform,box-shadow] duration-300 ease-out",
+          open ? "translate-x-0 shadow-modal" : "translate-x-full shadow-none",
         )}
       >
         <div className="mb-4 flex items-center justify-between">

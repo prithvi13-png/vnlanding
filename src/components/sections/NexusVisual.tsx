@@ -21,9 +21,10 @@ const NODES: NexusNode[] = [
 
 /**
  * The signature "Nexus" visual: a central hub connected to the four travel
- * modes and Technology by thin lines with a slow travelling glow. Purely
- * decorative — aria-hidden, with every animated piece gated by
- * motion-reduce:animate-none.
+ * modes and Technology by thin lines. Purely decorative — aria-hidden, with
+ * every animated piece gated by motion-reduce:animate-none. Its animations
+ * (hub pulse, node float) are transform/opacity only, so they stay on the
+ * compositor.
  */
 export function NexusVisual() {
   return (
@@ -38,20 +39,6 @@ export function NexusVisual() {
             y2={(node.top / 100) * 500}
             className="stroke-brand-border"
             strokeWidth={1.5}
-          />
-        ))}
-        {NODES.map((node) => (
-          <line
-            key={`${node.id}-glow`}
-            x1="250"
-            y1="250"
-            x2={(node.left / 100) * 500}
-            y2={(node.top / 100) * 500}
-            className="stroke-brand-gold motion-reduce:hidden"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeDasharray="6 220"
-            style={{ animation: `travel-glow 3.5s linear infinite`, animationDelay: `${node.floatDelayMs / 2}ms` }}
           />
         ))}
       </svg>

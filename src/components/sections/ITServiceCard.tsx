@@ -21,8 +21,11 @@ interface ITServiceCardProps {
 export function ITServiceCard({ service, href }: ITServiceCardProps) {
   const Icon = service.icon;
 
+  // No aria-label: it would replace the visible text as the link's name, so
+  // speech-input users couldn't activate it by saying what they see
+  // (WCAG 2.5.3). The name is the card's text plus the sr-only hint below.
   return (
-    <a href={href} className="group block h-full" aria-label={`Email us about ${service.name}`}>
+    <a href={href} className="group block h-full">
       <Card
         padding="lg"
         className="flex h-full flex-col gap-4 transition-[transform,box-shadow,border-color] duration-300 ease-out group-hover:-translate-y-1.5 group-hover:border-brand-gold/60 group-hover:shadow-card-hover"
@@ -37,6 +40,7 @@ export function ITServiceCard({ service, href }: ITServiceCardProps) {
         <p className="flex-1 text-sm text-brand-muted">{service.description}</p>
 
         <ArrowRightIcon className="size-4 text-brand-primary transition-transform duration-300 ease-out group-hover:translate-x-1" />
+        <span className="sr-only">(opens email)</span>
       </Card>
     </a>
   );

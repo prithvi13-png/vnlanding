@@ -17,6 +17,7 @@ export function StaggerItem({ children, index = 0, className, step = 90 }: Stagg
 
   return (
     <div
+      data-reveal
       className={cn(
         "transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",
         inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",

@@ -13,7 +13,7 @@ export function Footer() {
   const telHref = `tel:${siteConfig.contactPhone.replace(/\s+/g, "")}`;
 
   return (
-    <footer className="bg-brand-text text-white/70">
+    <footer className="surface-dark bg-brand-text text-white/70">
       <div className="container-brand grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
         <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
           <Logo variant="dark" />
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Travel">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Travel</h3>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-white">Travel</h2>
           <ul className="mt-4 flex flex-col gap-3">
             {travelServices.map((service) => (
               <li key={service.id} className="flex items-center gap-2 text-sm text-white/60">
@@ -90,8 +90,9 @@ export function Footer() {
           </ul>
         </nav>
 
-        <nav aria-label="Technology">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Technology</h3>
+        {/* A plain list, not a <nav>: none of these entries are links. */}
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-white">Technology</h2>
           <ul className="mt-4 flex flex-col gap-3">
             {itServices.map((service) => (
               <li key={service.id} className="text-sm text-white/60">
@@ -99,10 +100,10 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </nav>
+        </div>
 
         <nav aria-label="Navigation">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</h3>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</h2>
           <ul className="mt-4 flex flex-col gap-3">
             {primaryNav.map((item) => (
               <li key={item.id}>
@@ -116,7 +117,7 @@ export function Footer() {
             ))}
           </ul>
 
-          <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white">Legal</h3>
+          <h2 className="mt-8 text-sm font-semibold uppercase tracking-wide text-white">Legal</h2>
           <ul className="mt-4 flex flex-col gap-3">
             {legalNav.map((item) => (
               <li key={item.id}>
@@ -133,7 +134,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-6">
-        <div className="container-brand flex flex-col gap-2 text-center text-xs text-white/40">
+        {/* white/55 is 5.7:1 on the footer; the old white/40 was 3.7:1 and failed AA. */}
+        <div className="container-brand flex flex-col gap-2 text-center text-xs text-white/55">
           <p>{legalConfig.registeredAddress}</p>
           <p>
             CIN: {legalConfig.cin} &middot; GSTIN: {legalConfig.gstin}

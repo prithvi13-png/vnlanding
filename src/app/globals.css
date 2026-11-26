@@ -28,7 +28,12 @@
   --brand-background: #f8faf9;
   --brand-surface: #ffffff;
   --brand-text: #1c2723;
-  --brand-muted: #6e7975;
+  /*
+   * Muted body copy. Must clear WCAG AA (4.5:1) on every light surface it
+   * sits on: white 5.5:1, background 5.3:1, primary-light 4.8:1. The old
+   * #6e7975 dropped to 3.9:1 on primary-light and 4.3:1 on the background.
+   */
+  --brand-muted: #606b67;
   --brand-border: #e1e8e4;
 
   /* Form/validation feedback — not brand accents, kept in the same token system */
@@ -109,6 +114,11 @@
     border-radius: 0.25rem;
   }
 
+  /* Emerald is only 2.5:1 on the dark footer; gold keeps the ring at 7.3:1. */
+  .surface-dark :focus-visible {
+    outline-color: var(--brand-gold);
+  }
+
   /* Anchor-jumps land clear of the fixed navbar (h-20 desktop / h-16 scrolled) */
   [id] {
     scroll-margin-top: 5rem;
@@ -122,9 +132,42 @@
 }
 
 /*
- * Ambient hero/vision animation keyframes. Every element using these also
- * carries motion-reduce:animate-none — reduced-motion users get the static
- * end state, never a spinning/bobbing page.
+ * Hero entrance. Pure CSS so the headline starts appearing on first paint
+ * instead of waiting for React to hydrate and an IntersectionObserver to
+ * fire. Users who prefer reduced motion get motion-reduce:animate-none.
+ */
+@theme {
+  /* For the headline: it is the page's LCP element, and an element fading
+     up from opacity 0 only counts as painted once it is partly visible, so
+     the headline slides into place without fading. */
+  --animate-hero-slide: hero-slide 700ms ease-out both;
+  --animate-hero-rise: hero-rise 700ms ease-out both;
+  --animate-hero-fade: hero-fade 700ms ease-out both;
+
+  @keyframes hero-slide {
+    from {
+      transform: translateY(1.5rem);
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+  }
+
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+/*
+ * Ambient hero animation keyframes. Both animate only transform and
+ * opacity, so they run on the compositor without repainting each frame.
+ * Every element using them also carries motion-reduce:animate-none.
  */
 @keyframes float {
   0%,
@@ -145,21 +188,5 @@
   50% {
     opacity: 0.5;
     transform: scale(1.2);
-  }
-}
-
-@keyframes travel-glow {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes gradient-pan {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
   }
 }
